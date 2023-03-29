@@ -3,3 +3,8 @@ h1 {
     color: rgb(152, 100, 237);
   }
   
+  .error-img {
+    display: block;
+  margin-left: auto;
+  margin-right: auto;
+  }
