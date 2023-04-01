@@ -40,29 +40,44 @@ let places = require('../models/places')
   
   router.put('/:id', (req, res) => {
     let id = Number(req.params.id)
-    if (isNaN(id) || !places[id]) {
+    if (isNaN(id)) {
         res.render('error404')
+    } else if (!places[id]) {
+        res.render('error404')
+    } else {
+      if (!req.body.pic) {
+        req.body.pic = 'http://placekitten.com/400/400'
+      }
+      if (!req.body.city) {
+        req.body.city = 'Anytown'
+      }
+      if (!req.body.state) {
+        req.body.state = 'USA'
+      }
+      places[id] = req.body
+      res.redirect(`/places/${id}`)
     }
-
-    req.body.pic = req.body.pic || '/images/default_food.jpg'
-    req.body.city = req.body.city || 'Anytown'
-    req.body.state = req.body.state || 'USA'
-    places[id] = req.body
-    res.redirect(`/places/${id}`)
-})
+  })
   
 router.get('/', (req, res) => {
     res.render('places/index', { places })
 }) 
 
 router.post('/', (req, res) => {
-  req.body.pic = req.body.pic || '/images/default_food.jpg'
-  req.body.city = req.body.city || 'Anytown'
-  req.body.state = req.body.state || 'USA'
+    if (!req.body.pic) {
+      req.body.pic = 'http://placekitten.com/400/400'
+    }
+    if (!req.body.city) {
+      req.body.city = 'Anytown'
+    }
+    if (!req.body.state) {
+      req.body.state = 'USA'
+    }
 
-  places.push(req.body)
-  res.redirect('/places')
-})
+    places.push(req.body)
+
+    res.redirect('/places')
+  })
   
 
 module.exports = router
