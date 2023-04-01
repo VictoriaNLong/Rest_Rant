@@ -3,14 +3,21 @@ body {
     text-align: center;
 }
 main {
-    margin-left: 20px;
-    margin-right: 20px;
-    background-color: rgb(233, 248, 252);
+    margin-left: 10%;
+    margin-right: 10%;
+    height: max-content;
+    background-color: rgb(249, 247, 252);
+    
 }
 
 h1 {
     text-align: center;
     color: rgb(152, 100, 237);
+  }
+
+  h3, h4 {
+    text-align: center;
+    color: rgb(178, 136, 245);
   }
   
   .error-img {
@@ -20,7 +27,7 @@ h1 {
   }
 
   nav {
-    background-color: rgb(152, 100, 237);
+    background-color: rgb(57, 56, 58);
     padding: 10px;
 }
 
