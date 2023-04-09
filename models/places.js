@@ -6,7 +6,8 @@ const placeSchema = new mongoose.Schema({
   cuisines: { type: String, required: true },
   city: { type: String, default: 'Anytown' },
   state: { type: String, default: 'USA' },
-  founded: {type: Number, min: [1673, 'Too old'], max: [new Date().getFullYear(), 'Date in the future']}
+  founded: {type: Number, min: [1673, 'Too old'], max: [new Date().getFullYear(), 'Date in the future']},
+  comments: [{type: mongoose.Schema.Types.ObjectId, ref:'Comment'}]
 })
 
 placeSchema.methods.showEstablished = function() {
